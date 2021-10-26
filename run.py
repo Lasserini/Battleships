@@ -26,6 +26,7 @@ def hit_miss  (check if user has hit a ship, and change icon accordingly)
 
 Legend for Grid:
 "." = Water (empty space)
+"@" = Ship (only used backend)
 "X" = Hit (damaged ship)
 "0" = Miss (water that has been shot at, without hitting a ship)
 """
@@ -98,7 +99,20 @@ def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coord
     global grid
 
     empty_position = True
-    
+    # Check if we are trying to position a ship on a non water space
+    for column in range(y_coordinate_start, y_coordinate_end):
+        for row in range(x_coordinate_start, x_coordinate_end):
+            if grid[column][row] != ".":
+                empty_position = False
+                break
+    # If the coast is clear, we are ready to store the ships location
+    if empty_position:
+        ship_location_storage.append([y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end])
+        for column in range(y_coordinate_start, y_coordinate_end):
+            for row in range(x_coordinate_start, x_coordinate_end):
+                grid[column][row] = "@"
+    return empty_position
+
 
 def check_position(column, row, size, heading):
     """
@@ -110,15 +124,15 @@ def check_position(column, row, size, heading):
     global grid_size
 
     y_coordinate_start = column
-    y_coordinate_end = column +1
+    y_coordinate_end = column + 1
     x_coordinate_start = row
-    x_coordinate_end = row +1
+    x_coordinate_end = row + 1
 
     # Depending on which way the ship is heading we perform a different check.
     if heading == "up":
-        if row - size <0:
+        if row - size < 0:
             return False
-        x_coordinate_start = row - size +1
+        x_coordinate_start = row - size + 1
     elif heading == "down":
         if row + size >= grid_size:
             return False
@@ -128,9 +142,9 @@ def check_position(column, row, size, heading):
             return False
         y_coordinate_end = column + size
     else:
-        if column - size <0:
+        if column - size < 0:
             return False
-        y_coordinate_start = column - size +1
+        y_coordinate_start = column - size + 1
 
     # Having ensured the position is viable, its time to make one final check.
     return print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end)    
@@ -152,7 +166,7 @@ def start_game():
     rows = grid_size
 
     grid = []
-    for c in range (columns):
+    for c in range(columns):
         column = []
         for r in range(rows):
             column.append(".")
@@ -166,12 +180,13 @@ def start_game():
 
     # While loop randomly finds ship size and position until ship_count is correct
     while ships_made != ship_count:
-        pick_column = random.randint(0, columns -1)
-        pick_row = random.randint(0, rows -1)
+        pick_column = random.randint(0, columns - 1)
+        pick_row = random.randint(0, rows - 1)
         ship_size = random.randint(2, 5)
         heading = random.choice(["up", "down", "right", "left"])
         if check_position(pick_column, pick_row, ship_size, heading):
-            ship_size +=1
+            ship_size += 1
+
 
 def make_grid():
     """
