@@ -15,7 +15,7 @@ What global variables do I need?
 
 
 What functions do I need?
-def start_game  (once user confirms/inputs difficulty settings, this runs and builds the grid with ships)
+def setup_game  (once user confirms/inputs difficulty settings, this runs and builds the grid with ships)
 
 def hit_miss  (check if user has hit a ship, and change icon accordingly)
     def hit
@@ -61,6 +61,9 @@ game_lenght = 1
 
 # Variable that stores information about where the ships randomly spawned
 ship_location_storage = [[]]
+
+# Variable used to check if either game ending state is reached
+game_complete = False
 
 
 def difficulty_setting(game_lenght):
@@ -116,7 +119,7 @@ def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coord
 
 def check_position(column, row, size, heading):
     """
-    Function that uses the randomly generated ship info from start_game.
+    Function that uses the randomly generated ship info from setup_game.
     Combines the selected coordinate with lenght & heading to check if ship remains inside the grid.
     Calls support function that checks if the ship would collide with a previously placed ship.
     """
@@ -150,7 +153,7 @@ def check_position(column, row, size, heading):
     return print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end)    
 
 
-def start_game():
+def setup_game():
     """
     The function that combines all the initial methods required to setup the game.
     Creates the grid and randomly places the ships.
@@ -202,6 +205,62 @@ def make_grid():
     # for loop to print the grid (need to figure this out)
 
 
+def game_over():
+    """
+    A function that tests whether the game is won or lost.
+    Enables the gameplay while loop in run_game() to end.
+    """
 
 
-# Some user input to get the game started
+def fire():
+    """
+    This function handles the steps taken when the user needs to fire a shoot.
+    """
+
+
+def run_game():
+    """
+    Function to start the game upon loading the program.
+    Provides some welcome text to the user.
+    It checks whether game_complete state is reached.
+    """
+    # Global variables being modified inside this function
+    global game_complete
+
+    print("Welcome to Battleship Commander")
+    print("Can you sink all the enemy ships before it's too late?")
+
+    # Calling the function that randomly generates the gameboard
+    setup_game()
+
+    # The while loop that is essentially the gameplay loop
+    while game_complete is False:
+        make_grid()
+        print("Ammunition left: " + str(shots_left))
+        print(str(ship_count-ships_sunk) + " enemy ships incoming!")
+        # Calling shoot() which handles anything related to fireing shoots
+        fire()
+        # & finally calling the function changes game_complete when required
+        game_over()
+
+
+def welcome():
+    print("Welcome to Battleship Commander")
+    print("Can you sink all the enemy ships before it's too late?")
+    print("- - -")
+    print("Rules")
+    print("Based upon your chosen lenght, the game creates a board")
+    print("The board has hidden ships, ranging from size 2-5")
+    print("Inform the ships cannoneer which quadron to aim for")
+    print("Legend")
+    print(". is water, X represents a Hit!, 0 a Miss")
+    print("- - -")
+    print("Sink all the ships before ammunition runs out")
+    print("Good luck!")
+    print("- - -")
+
+    run_game()
+
+
+# The function above is called, providing a welcome message.
+welcome()
