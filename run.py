@@ -60,6 +60,7 @@ ships_sunk = 0
 game_lenght = 1
 
 
+
 def difficulty_setting(game_lenght):
     """
     A function to set grid_size, ship_count & shots_left based upon users desired game lenght.
@@ -83,21 +84,25 @@ def difficulty_setting(game_lenght):
         shots_left = 72
 
 
+
+
+
+
 def start_game():
     """
     The function that combines all the initial methods required to setup the game.
     Creates the grid and randomly places the ships.
     """
-    # Here the random & time imports are utilized to ensure a random setup every game.
-    random.seed(time.time())
-
     # Global variables being modified inside this function
     global grid_size
     global grid
 
-    # Using 
-    columns = (grid_size)
-    rows = (grid_size)
+    # Here the random & time imports are utilized to ensure a random setup every game.
+    random.seed(time.time())
+
+    # Using grid_size to set amount of columns and rows.
+    columns = grid_size
+    rows = grid_size
 
     grid = []
     for c in range (columns):
@@ -107,5 +112,15 @@ def start_game():
         grid.append(column)
 
 
+def make_grid():
+    """
+    Prints the grid to the terminal, to give the player a visual understanding of what's going on.
+    """
+    # Global variables being modified inside this function
+    global grid
+    global letters
+
+    # Adjusting lenght of letters depending on chosen game lenght
+    letters = letters[0: len(grid)+1]
 
 # Some user input to get the game started
