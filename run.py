@@ -210,6 +210,19 @@ def game_over():
     A function that tests whether the game is won or lost.
     Enables the gameplay while loop in run_game() to end.
     """
+    # Global variables being modified inside this function
+    global ship_count
+    global ships_sunk
+    global shots_left
+    global game_complete
+
+    # Check whether the game is won or lost (REMEMBER TO UPDATE FLAVOURTEXT!)
+    if shots_left <= 0:
+        print("You lose")
+        game_complete = True
+    elif ship_count == ships_sunk:
+        print("You won")
+        game_complete = True
 
 
 def fire():
