@@ -31,8 +31,7 @@ Legend for Grid:
 "0" = Miss (water that has been shot at, without hitting a ship)
 """
 
-# Imports used to generate random ship placement, time to help ensure randomness.
-    # random.seed(time.time()) -> makes the random seed time dependant, to ensure new random seed for additional games. Used in create_grid.
+# Imports used to generate random ship placement, time to help ensure randomness
 import random
 import time
 
@@ -57,3 +56,56 @@ ship_count = 8
 # Variable that tracks amount of ships sunk.
 ships_sunk = 0
 
+# Variable to remember chosen difficulty setting
+game_lenght = 1
+
+
+def difficulty_setting(game_lenght):
+    """
+    A function to set grid_size, ship_count & shots_left based upon users desired game lenght.
+    """
+    # Global variables being modified inside this function
+    global grid_size
+    global ship_count
+    global shots_left
+
+    if game_lenght == 1:
+        grid_size = 8
+        ship_count = 5
+        shots_left = 32
+    elif game_lenght == 2:
+        grid_size = 10
+        ship_count = 8
+        shots_left = 50
+    else:
+        grid_size = 12
+        ship_count = 12
+        shots_left = 72
+
+
+def start_game():
+    """
+    The function that combines all the initial methods required to setup the game.
+    Creates the grid and randomly places the ships.
+    """
+    # Here the random & time imports are utilized to ensure a random setup every game.
+    random.seed(time.time())
+
+    # Global variables being modified inside this function
+    global grid_size
+    global grid
+
+    # Using 
+    columns = (grid_size)
+    rows = (grid_size)
+
+    grid = []
+    for c in range (columns):
+        column = []
+        for r in range(rows):
+            column.append(".")
+        grid.append(column)
+
+
+
+# Some user input to get the game started
