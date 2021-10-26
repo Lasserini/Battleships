@@ -26,7 +26,6 @@ def hit_miss  (check if user has hit a ship, and change icon accordingly)
 
 Legend for Grid:
 "." = Water (empty space)
-"#" = Ship (undamaged)
 "X" = Hit (damaged ship)
 "0" = Miss (water that has been shot at, without hitting a ship)
 """
@@ -59,11 +58,14 @@ ships_sunk = 0
 # Variable to remember chosen difficulty setting
 game_lenght = 1
 
+# Variable that stores information about where the ships randomly spawned
+ship_location_storage = [[]]
 
 
 def difficulty_setting(game_lenght):
     """
-    A function to set grid_size, ship_count & shots_left based upon users desired game lenght.
+    A function to set grid_size, ship_count & shots_left 
+    The variables differ dependant on users chosen game lenght.
     """
     # Global variables being modified inside this function
     global grid_size
@@ -85,6 +87,21 @@ def difficulty_setting(game_lenght):
 
 
 
+def check_position(column, row, size, heading):
+    """
+    Function that uses the randomly generated ship info from start_game.
+    Combines the selected coordinate with lenght & heading to check if ship remains inside the grid.
+    Calls support function that checks if the ship would collide with a previously placed ship.
+    """
+    # Global variables being modified inside this function
+    global grid_size
+
+    y_coordinate = column
+    y_end = column + 1
+    x_coordinate = row
+    x_end = row + 1
+
+
 
 
 
@@ -96,9 +113,8 @@ def start_game():
     # Global variables being modified inside this function
     global grid_size
     global grid
-
-    # Here the random & time imports are utilized to ensure a random setup every game.
-    random.seed(time.time())
+    global ship_count
+    global ship_location_storage
 
     # Using grid_size to set amount of columns and rows.
     columns = grid_size
@@ -111,6 +127,20 @@ def start_game():
             column.append(".")
         grid.append(column)
 
+    # Here the random & time imports are utilized to ensure a random setup every game.
+    random.seed(time.time())
+
+    ships_made = 0
+    ship_location_storage = []
+
+    # While loop randomly finds ship size and position until ship_count is correct
+    while ships_made != ship_count:
+        pick_column = random.randint(0, columns -1)
+        pick_row = random.randint(0, rows -1)
+        ship_size = random.randint(2, 5)
+        heading = random.choice(["up", "down", "right", "left"])
+        if check_position(pick_column, pick_row, ship_size, heading):
+            ship_size += 1
 
 def make_grid():
     """
