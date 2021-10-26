@@ -86,6 +86,19 @@ def difficulty_setting(game_lenght):
         shots_left = 72
 
 
+def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end):
+    """
+    Function to print the ship onto the gameboard.
+    Performs a check to ensure not ships end up on top of eachother.
+    Then stores position into the ships_location_storage variable.
+    ships_location_storage is used to check for hits and if game is won.
+    """
+    # Global variables being modified inside this function
+    global ship_location_storage
+    global grid
+
+    empty_position = True
+    
 
 def check_position(column, row, size, heading):
     """
@@ -96,13 +109,31 @@ def check_position(column, row, size, heading):
     # Global variables being modified inside this function
     global grid_size
 
-    y_coordinate = column
-    y_end = column + 1
-    x_coordinate = row
-    x_end = row + 1
+    y_coordinate_start = column
+    y_coordinate_end = column +1
+    x_coordinate_start = row
+    x_coordinate_end = row +1
 
+    # Depending on which way the ship is heading we perform a different check.
+    if heading == "up":
+        if row - size <0:
+            return False
+        x_coordinate_start = row - size +1
+    elif heading == "down":
+        if row + size >= grid_size:
+            return False
+        x_coordinate_end = row + size
+    elif heading == "right":
+        if column + size >= grid_size:
+            return False
+        y_coordinate_end = column + size
+    else:
+        if column - size <0:
+            return False
+        y_coordinate_start = column - size +1
 
-
+    # Having ensured the position is viable, its time to make one final check.
+    return print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end)    
 
 
 def start_game():
@@ -110,7 +141,7 @@ def start_game():
     The function that combines all the initial methods required to setup the game.
     Creates the grid and randomly places the ships.
     """
-    # Global variables being modified inside this function
+    # Global variables being modified inside this function.
     global grid_size
     global grid
     global ship_count
@@ -140,7 +171,7 @@ def start_game():
         ship_size = random.randint(2, 5)
         heading = random.choice(["up", "down", "right", "left"])
         if check_position(pick_column, pick_row, ship_size, heading):
-            ship_size += 1
+            ship_size +=1
 
 def make_grid():
     """
