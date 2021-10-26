@@ -257,7 +257,21 @@ def run_game():
         game_over()
 
 
+def set_difficulty():
+    """
+    Function that prompts user for desired difficulty.
+    """
+    game_lenght = int(input("Select game lenght. Short=1, Medium=2, Long=3: "))
+
 def welcome():
+    """
+    Displays a welcome flavourtext message.
+    Asks user to select game length.
+    Calls the run_game function to start gameplay loop.
+    """
+    # Global variables being modified inside this function
+    global game_lenght
+
     print("Welcome to Battleship Commander")
     print("Can you sink all the enemy ships before it's too late?")
     print("- - -")
@@ -272,7 +286,15 @@ def welcome():
     print("Good luck!")
     print("- - -")
 
-    run_game()
+    # Asking the user to set game lenght
+    set_difficulty()
+
+    # Calling the function that initiates the gameplay loop.
+    if 1 <= game_lenght <= 3:
+        run_game()
+    else:
+        print("Error: Type a number between 1 & 3 to select game lenght")
+        set_difficulty()
 
 
 # The function above is called, providing a welcome message.
