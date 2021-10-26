@@ -123,4 +123,9 @@ def make_grid():
     # Adjusting lenght of letters depending on chosen game lenght
     letters = letters[0: len(grid)+1]
 
+    # for loop to print the grid (need to figure this out)
+
+
+
+
 # Some user input to get the game started
