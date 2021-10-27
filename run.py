@@ -275,12 +275,12 @@ def fire():
     print("----------------------------")
 
     # Checking what the shot hit & applying consequence
-    if grid[row][col] == ".":
+    if grid[row][column] == ".":
         print("You hear a large 'blop' as your MISS! hits the water")
-        grid[row][col] = "0"
-    elif grid[row][col] == "@":
+        grid[row][column] = "0"
+    elif grid[row][column] == "@":
         print("KABOOM! An amazing HIT", end=" ")
-        grid[row][col] = "X"
+        grid[row][column] = "X"
         if ship_sunk(row, column):
             print("Success! The ship takes a massive blow and sinks!")
             ships_sunk += 1
