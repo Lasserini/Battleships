@@ -251,10 +251,10 @@ def where_to_shoot():
         if not (-1 < column < grid_size):
             print("Error: Enter letter for row and number for column")
             continue
-        if grid[row][column] == "#" or grid[row][column] == "X":
+        if grid[row][column] == "0" or grid[row][column] == "X":
             print("Location fired at previously. Try again")
             continue
-        if grid[row][column] == "." or grid[row][column] == "O":
+        if grid[row][column] == "." or grid[row][column] == "#":
             coord_correct = True
 
     # sends the coordinates back to the fire() function

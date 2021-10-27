@@ -1,25 +1,33 @@
-<h1 align="center">Battleships</h1>
+<h1 align="center">Battleship Commander</h1>
 
 <h2 align="center"><img src="INSERT Am I Responsive Image"></h2>
 
 This game is a Python terminal game, build during a Diploma in Software Development at Code Institute. Its the third porfolio project out of five and is build in Python.
 The game runs in Code Institute's mock terminal on Heroku.
 
-The goal of the game is to sink all the computer's battleships before the computer has sunk yours. Best of luck!
+The goal of the game is to sink all the computers ships before you run out of ammunition. Best of luck!
 
 [Try the live version of the game here:](UPDATE LINK TO DEPLOYED GAME HERE)
 
 ## 1. How to Play
-CONTENT
+- First the game prompts the players for whether they would like a short, medium or long game.
+- The program then creates a gameboard with some hidden ships.
+- To win you must sink all the hidden ships.
+- If you run out of ammunition, then the game is lost.
+- Type coordinates into the terminal so select where you want to shoot.
+- The game provides visual and textual feedback on whether your shot hit or missed.
+- Keep shooting until the game reaches its conclusion.
 
 ## 2. User Experience (UX)
 
 ### 2.1 Project introduction
-CONTENT?
+A quick game experience based upon the classic Battleships game. Here you are playing 1 player was a computer generated board of hidden ships.
+Sink them all before its too late.
 
 ### 2.2 Project goals
 - Create a Battleship game using Python.
 - Make the gameplay loop run smoothly.
+- Allow the user to adjust game lenght.
 
 ### 2.3 Target audience
 The website is aimed at people who enjoy quick games, its intended to be lighthearted enough to provide a fun experience.
@@ -27,15 +35,28 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
 
 ## 3. Features
 ### 3.1 Current Features
-*   Subheader   
-    - Content
-    - Content
-    - Content
+*   Random Board Generation 
+    - Ships are placed randomly on the gameboard.
+    - Ships can have varying random lenghts.
+    - Ships remain hidden from the player until they take a hit.
+
+*   Custom game lenght
+    - Player imput dictates whether a short, medium or long game is run.
+    - The factors that change are grid size, number of ships and amount of ammunition.
+
+*   Imput validation
+    - Must enter coordinates inside the gameboard(grid).
+    - Prevents entering the same guess more than once.
+    - Ensures the correct format for guesses is being used.
+
+*   User feedback
+    - Provides both visual and textual feedback to player shots.
+    - Ensures the user is able to understand whats going on at all times.
     
-### 3.2 Features left to implement 
-- Content
-- Content
-- Content
+### 3.2 Potential ideas for more features
+- Stronger control of how many ships of each size is produced.
+- Difficulty settings (fx more/less ammunition etc.)
+- Sea Mines (a 1spot trap with some negative consequence to the player)
 
 ## 5. Data Model
 REMEMBER TO ADD CONTENT
@@ -46,7 +67,7 @@ REMEMBER TO ADD CONTENT
 
 -   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### 5.2 Frameworks, Libraries & Programs Used
+### 5.2 Programs Used
 
 1. [Gitpod](https://gitpod.io/)
     - Gitpod was used to develop the website.
@@ -54,19 +75,15 @@ REMEMBER TO ADD CONTENT
     - GitHub is used to store the projects code after being pushed from Git. And to host the project.
 1. [Heruku:](https://www.heroku.com/)
     - Used to create a live version of the project.
-1. [Responsive Design Checker:](https://www.responsivedesignchecker.com/)
-    - Used in the testing process to check responsiveness on various devices.
 1. [Am I Responsive:](http://ami.responsivedesign.is/)
-    - Used for quick glance at responsiveness and for README image.
+    - Used for README image.
 1. [PEP8 Python Validator](https://pep8online.com/)
     - Used to validate Python code.
 
-## 6. Testing
-I have tested the project by doing the following:
-- Content
-- Content
-- Content
+### 5.3 Libraries & Frameworks Used
+- Used Random to help randomly place ships.
 
+## 6. Testing
 ### 6.1 Solved Bugs
 - The grid printed was out of line with the numbers below.
     - Added : to the letter printing to push content into place.
@@ -74,11 +91,11 @@ I have tested the project by doing the following:
 - The while loop in setup_game wasn't working as intended.
     - Tried a myriad on unsuccesful things.
     - At the end I found the error, I was +=1 the wrong variable which was causing all sorts of issues.
+- Recieved incorrect error message when shots got a hit.
+    - Corrected some incorrect Legend usage in the error checking functions.
 
 ### 6.2 Remaining Bugs
-- Content
-- Content
-- Content
+- None uncovered so far.
 
 ### 6.3 Validator Testing
 PEP8.
@@ -102,12 +119,11 @@ The project was deployed using Code Institute's mock terminal for Heroku.
 - Content
 
 ### Content
-
 -   All content was written by the developer.
 
 
 ### Acknowledgements
 
-- [W3Schools] https://www.w3schools.com/ for being a good friend whenever I needed to quickly read up on something.
+- [W3Schools] https://www.w3schools.com/ for being a great place to find helpful answers.
 
 - Code Institute for the deployment terminal.
