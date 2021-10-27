@@ -168,7 +168,7 @@ def setup_game():
         ship_size = random.randint(2, 5)
         heading = random.choice(["up", "down", "right", "left"])
         if check_position(pick_column, pick_row, ship_size, heading):
-            ship_size += 1
+            ships_made += 1
 
 
 def make_grid():
