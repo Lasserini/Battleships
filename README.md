@@ -46,7 +46,7 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
     - Player imput dictates whether a short, medium or long game is run.
     - The factors that change are grid size, number of ships and amount of ammunition.
 
-<img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/select_game_length.png">
+<img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/select_game_lenght.png">
 
 *   Imput validation
     - Must enter coordinates inside the gameboard(grid).
