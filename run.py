@@ -62,6 +62,7 @@ def difficulty_setting(game_lenght):
         grid_size = 10
         ship_count = 8
         shots_left = 50
+    return
 
 
 def print_ship(
@@ -151,11 +152,11 @@ def setup_game():
     rows = grid_size
 
     grid = []
-    for c in range(columns):
-        column = []
-        for r in range(rows):
-            column.append(".")
-        grid.append(column)
+    for c in range(rows):
+        row = []
+        for r in range(columns):
+            row.append(".")
+        grid.append(row)
 
     ships_made = 0
     ship_location_storage = []
@@ -349,7 +350,7 @@ def set_difficulty():
     # Global variables being modified inside this function
     global game_lenght
 
-    game_lenght = int(input("Select game lenght. Short=1, Medium=2, Long=3: "))
+    game_lenght = int(input("Select game lenght, Short=1, Medium=2, Long=3: "))
 
 
 def welcome():
