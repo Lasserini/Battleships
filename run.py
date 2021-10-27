@@ -40,7 +40,6 @@ ship_location_storage = [[]]
 game_complete = False
 
 
-
 def difficulty_setting(game_lenght):
     """
     A function to set grid_size, ship_count & shots_left
@@ -66,8 +65,8 @@ def difficulty_setting(game_lenght):
 
 
 def print_ship(
-        y_coordinate_start, y_coordinate_end,
-        x_coordinate_start, x_coordinate_end):
+        y_coord_start, y_coord_end,
+        x_coord_start, x_coord_end):
     """
     Function to print the ship onto the gameboard.
     Performs a check to ensure not ships end up on top of eachother.
@@ -80,18 +79,18 @@ def print_ship(
 
     empty_position = True
     # Check if we are trying to position a ship on a non water space
-    for column in range(y_coordinate_start, y_coordinate_end):
-        for row in range(x_coordinate_start, x_coordinate_end):
+    for column in range(y_coord_start, y_coord_end):
+        for row in range(x_coord_start, x_coord_end):
             if grid[column][row] != ".":
                 empty_position = False
                 break
     # If the coast is clear, we are ready to store the ships location
     if empty_position:
         ship_location_storage.append(
-            [y_coordinate_start, y_coordinate_end,
-                x_coordinate_start, x_coordinate_end])
-        for column in range(y_coordinate_start, y_coordinate_end):
-            for row in range(x_coordinate_start, x_coordinate_end):
+            [y_coord_start, y_coord_end,
+                x_coord_start, x_coord_end])
+        for column in range(y_coord_start, y_coord_end):
+            for row in range(x_coord_start, x_coord_end):
                 grid[column][row] = "@"
     return empty_position
 
@@ -107,33 +106,33 @@ def check_position(column, row, size, heading):
     # Global variables being modified inside this function
     global grid_size
 
-    y_coordinate_start = column
-    y_coordinate_end = column + 1
-    x_coordinate_start = row
-    x_coordinate_end = row + 1
+    y_coord_start = column
+    y_coord_end = column + 1
+    x_coord_start = row
+    x_coord_end = row + 1
 
     # Depending on which way the ship is heading we perform a different check.
     if heading == "up":
         if row - size < 0:
             return False
-        x_coordinate_start = row - size + 1
+        x_coord_start = row - size + 1
     elif heading == "down":
         if row + size >= grid_size:
             return False
-        x_coordinate_end = row + size
+        x_coord_end = row + size
     elif heading == "right":
         if column + size >= grid_size:
             return False
-        y_coordinate_end = column + size
+        y_coord_end = column + size
     else:
         if column - size < 0:
             return False
-        y_coordinate_start = column - size + 1
+        y_coord_start = column - size + 1
 
     # Having ensured the position is viable, its time to make one final check.
     return print_ship(
-        y_coordinate_start, y_coordinate_end,
-        x_coordinate_start, x_coordinate_end)
+        y_coord_start, y_coord_end,
+        x_coord_start, x_coord_end)
 
 
 def setup_game():
@@ -229,10 +228,10 @@ def where_to_shoot():
     global grid
 
     # Setting some variables to store user input etc.
-    coordinates_correct = False
+    coord_correct = False
     row = -1
     column = -1
-    while coordinates_correct is False:
+    while coord_correct is False:
         placement = input("Enter row and column fx D7: ")
         placement = placement.upper()
         if len(placement) <= 0 or len(placement) > 2:
@@ -255,7 +254,7 @@ def where_to_shoot():
             print("Location fired at previously. Try again")
             continue
         if grid[row][column] == "." or grid[row][column] == "O":
-            coordinates_correct = True
+            coord_correct = True
 
     # sends the coordinates back to the fire() function
     return row, column
@@ -273,14 +272,14 @@ def ship_sunk(row, column):
 
     # First we locate the ship in the ship storage variable
     for position in ship_location_storage:
-        x_coordinate_start = position[0]
-        x_coordinate_end = position[1]
-        y_coordinate_start = position[2]
-        y_coordinate_end = position[3]
-        if x_coordinate_start <= row <= x_coordinate_end and y_coordinate_start <= column <= y_coordinate_end:
+        x_co_start = position[0]
+        x_co_end = position[1]
+        y_co_start = position[2]
+        y_co_end = position[3]
+        if x_co_start <= row <= x_co_end and y_co_start <= column <= y_co_end:
             # Then we check if the entire ship has been hit
-            for r in range(x_coordinate_start, x_coordinate_end):
-                for c in range(y_coordinate_start, y_coordinate_end):
+            for r in range(x_co_start, x_co_end):
+                for c in range(y_co_start, y_co_end):
                     if grid[r][c] != "X":
                         return False
     return True
