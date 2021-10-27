@@ -32,6 +32,16 @@ Sink them all before its too late.
 ### 2.3 Target audience
 The website is aimed at people who enjoy quick games, its intended to be lighthearted enough to provide a fun experience.
 
+### 2.4 User Stories
+- As a user I want to play a quick game.
+- As a user I want to adjust the duration of the game.
+- As a user I want to easily understand what happens after I enter coordinates
+- As a user I want to know if my inputs are incorrect
+
+### 2.5 Owner Stories
+- As an owner I want to ensure invalid inputs are handled gracefully
+- As an owner I want to deliver an engaging gameplay experience
+- As an owner I want to publish a functional minigame
 
 ## 3. Features
 ### 3.1 Current Features
@@ -103,12 +113,32 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
     - Ensures the user won't break the game, and will be able to select desired game lenght.
 
 ### 5.2 Remaining Bugs
-- None uncovered so far.
+- Typing a single input to coordinates breaks the game.
 
 ### 5.3 Validator Testing
 The code passes through the PEP8 Validator without issues.
 
 <img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/pep8_battleship_validation.png">
+
+### 5.3 Testing User Stories
+- As a user I want to play a quick game.
+    - Upon clicking the link, I need to select 1 option then the game starts.
+- As a user I want to adjust the duration of the game.
+    - The opening screen provides 3 options for game duration.
+- As a user I want to easily understand what happens after I enter coordinates
+    - After selecting correct coordinates, the game prints several lines that explains what happened.
+    - The game also updates the visual gameboard, to provide visual confirmation to the user.
+- As a user I want to know if my inputs are incorrect
+    - When something incorrect is entered, the game informs me of the problem and attempts to help fix it.
+
+### 5.4 Testing Owner Stories
+- As an owner I want to ensure invalid inputs are handled gracefully
+    - The program handles most invaled inputs gracefully, and helps the user back on track.
+- As an owner I want to deliver an engaging gameplay experience
+    - The game features some flavour text, attempting to bring a little story to life.
+- As an owner I want to publish a functional minigame
+    - The game works as intended.
+
 
 ## 6. Deployment
 The project was deployed using Code Institute's mock terminal for Heroku.
