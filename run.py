@@ -1,43 +1,17 @@
+import random
+
 """
-Basic idea:
-- Player has x shots to sink ships randomly generated onto a grid.
-- Ships will have varying sizes (of 2 to 5)
-- Allow player to alter difficulty (either difficulty setting, or directly by changing grid size, # of ships or # of bullets)
-- Attempt to keep gameplay resonably watchable in the terminal app.
-
-
-What global variables do I need?
-- grid (something that represents our grid)
-- grid_size (how large a grid is used)
-- number_of_ships (how many ships to place)
-- shots_left (how many shots left before game is lost)
-- ships_sunk (something to track fully sunk ships, to provide player info on their progress and to track if game is won)
-
-
-What functions do I need?
-def setup_game  (once user confirms/inputs difficulty settings, this runs and builds the grid with ships)
-
-def hit_miss  (check if user has hit a ship, and change icon accordingly)
-    def hit
-    def miss
-
-
-
+Import of random module to support building randomly placed ships later.
 
 Legend for Grid:
 "." = Water (empty space)
 "@" = Ship (only used backend)
 "X" = Hit (damaged ship)
 "0" = Miss (water that has been shot at, without hitting a ship)
+
+The program utilize a fair amount of global variables, they are listed below:
 """
 
-# Imports used to generate random ship placement, time to help ensure randomness
-import random
-import time
-
-"""
-The program utilized a fair amount of global variables, they are listed here.
-"""
 # A variable for the grid upon which the ships are places
 grid = [[]]
 
@@ -66,9 +40,10 @@ ship_location_storage = [[]]
 game_complete = False
 
 
+
 def difficulty_setting(game_lenght):
     """
-    A function to set grid_size, ship_count & shots_left 
+    A function to set grid_size, ship_count & shots_left
     The variables differ dependant on users chosen game lenght.
     """
     # Global variables being modified inside this function
@@ -90,7 +65,9 @@ def difficulty_setting(game_lenght):
         shots_left = 50
 
 
-def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end):
+def print_ship(
+        y_coordinate_start, y_coordinate_end,
+        x_coordinate_start, x_coordinate_end):
     """
     Function to print the ship onto the gameboard.
     Performs a check to ensure not ships end up on top of eachother.
@@ -110,7 +87,9 @@ def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coord
                 break
     # If the coast is clear, we are ready to store the ships location
     if empty_position:
-        ship_location_storage.append([y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end])
+        ship_location_storage.append(
+            [y_coordinate_start, y_coordinate_end,
+                x_coordinate_start, x_coordinate_end])
         for column in range(y_coordinate_start, y_coordinate_end):
             for row in range(x_coordinate_start, x_coordinate_end):
                 grid[column][row] = "@"
@@ -120,8 +99,10 @@ def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coord
 def check_position(column, row, size, heading):
     """
     Function that uses the randomly generated ship info from setup_game.
-    Combines the selected coordinate with lenght & heading to check if ship remains inside the grid.
-    Calls support function that checks if the ship would collide with a previously placed ship.
+    Combines the selected coordinate with lenght & heading to check if ship
+        remains inside the grid.
+    Calls support function that checks if the ship would collide with a
+        previously placed ship.
     """
     # Global variables being modified inside this function
     global grid_size
@@ -150,12 +131,14 @@ def check_position(column, row, size, heading):
         y_coordinate_start = column - size + 1
 
     # Having ensured the position is viable, its time to make one final check.
-    return print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end)    
+    return print_ship(
+        y_coordinate_start, y_coordinate_end,
+        x_coordinate_start, x_coordinate_end)
 
 
 def setup_game():
     """
-    The function that combines all the initial methods required to setup the game.
+    The function that combines all the initial methods required to setup game.
     Creates the grid and randomly places the ships.
     """
     # Global variables being modified inside this function.
@@ -175,13 +158,10 @@ def setup_game():
             column.append(".")
         grid.append(column)
 
-    # Here the random & time imports are utilized to ensure a random setup every game.
-    random.seed(time.time())
-
     ships_made = 0
     ship_location_storage = []
 
-    # While loop randomly finds ship size and position until ship_count is correct
+    # While loop that keeps making ships till we have enough
     while ships_made != ship_count:
         pick_column = random.randint(0, columns - 1)
         pick_row = random.randint(0, rows - 1)
@@ -247,6 +227,38 @@ def where_to_shoot():
     # Global variables being modified inside this function
     global letters
     global grid
+
+    # Setting some variables to store user input etc.
+    coordinates_correct = False
+    row = -1
+    column = -1
+    while coordinates_correct is False:
+        placement = input("Enter row and column fx D7: ")
+        placement = placement.upper()
+        if len(placement) <= 0 or len(placement) > 2:
+            print("Error: Only enter one row and column such fx D7")
+            continue
+        row = placement[0]
+        column = placement[1]
+        if not row.isalpha() or not column.isnumeric():
+            print("Error: Enter letter for row and number for column")
+            continue
+        row = letters.find(row)
+        if not (-1 < row < grid_size):
+            print("Error: Enter letter for row and number for column")
+            continue
+        column = int(column)
+        if not (-1 < column < grid_size):
+            print("Error: Enter letter for row and number for column")
+            continue
+        if grid[row][column] == "#" or grid[row][column] == "X":
+            print("Location fired at previously. Try again")
+            continue
+        if grid[row][column] == "." or grid[row][column] == "O":
+            coordinates_correct = True
+
+    # sends the coordinates back to the fire() function
+    return row, column
 
 
 def ship_sunk(row, column):
