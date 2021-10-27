@@ -249,7 +249,7 @@ def where_to_shoot():
     global grid
 
 
-def ship_sunk():
+def ship_sunk(row, column):
     """
     Function that runs on a hit.
     Checks whether the entire ship is sunk.
@@ -258,6 +258,20 @@ def ship_sunk():
     # Global variables being modified inside this function
     global ship_location_storage
     global grid
+
+    # First we locate the ship in the ship storage variable
+    for position in ship_location_storage:
+        x_coordinate_start = position[0]
+        x_coordinate_end = position[1]
+        y_coordinate_start = position[2]
+        y_coordinate_end = position[3]
+        if x_coordinate_start <= row <= x_coordinate_end and y_coordinate_start <= column <= y_coordinate_end:
+            # Then we check if the entire ship has been hit
+            for r in range(x_coordinate_start, x_coordinate_end):
+                for c in range(y_coordinate_start, y_coordinate_end):
+                    if grid[r][c] != "X":
+                        return False
+    return True
 
 
 def fire():
@@ -287,6 +301,7 @@ def fire():
         else:
             print("That ship needs another HIT!")
 
+    # Updates the counter for remaining ammunition
     shots_left -= 1
 
 
