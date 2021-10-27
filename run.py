@@ -31,7 +31,7 @@ ship_count = 8
 ships_sunk = 0
 
 # Variable to remember chosen difficulty setting
-game_lenght = 1
+game_lenght = 0
 
 # Variable that stores information about where the ships randomly spawned
 ship_location_storage = [[]]
@@ -346,11 +346,17 @@ def run_game():
 def set_difficulty():
     """
     Function that prompts user for desired difficulty.
+    Build in functionality to ensure valid user input.
     """
     # Global variables being modified inside this function
     global game_lenght
 
-    game_lenght = int(input("Select game lenght, Short=1, Medium=2, Long=3: "))
+    while game_lenght not in range(1, 3):
+        try:
+            game_lenght = int(
+                input("Select game lenght, Short=1, Medium=2, Long=3: "))
+        except ValueError:
+            print("Error: Type a number between 1 & 3 to select game lenght")
 
 
 def welcome():
@@ -384,7 +390,6 @@ def welcome():
         difficulty_setting(game_lenght)
         run_game()
     else:
-        print("Error: Type a number between 1 & 3 to select game lenght")
         set_difficulty()
 
 

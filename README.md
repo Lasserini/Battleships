@@ -93,6 +93,9 @@ REMEMBER TO ADD CONTENT
     - At the end I found the error, I was +=1 the wrong variable which was causing all sorts of issues.
 - Recieved incorrect error message when shots got a hit.
     - Corrected some incorrect Legend usage in the error checking functions.
+- Program was breaking when given unexpected player input for lenght setting.
+    - Added a range check and a ValueError exception.
+    - Ensures the user won't break the game, and will be able to select desired game lenght.
 
 ### 6.2 Remaining Bugs
 - None uncovered so far.
