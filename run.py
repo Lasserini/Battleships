@@ -183,17 +183,12 @@ def make_grid():
     # Adjusting lenght of letters depending on chosen game lenght
     letters = letters[0: len(grid)+1]
 
-    debug_mode = True
-
     # For loop to print the grid
     for row in range(len(grid)):
         print(letters[row], end=": ")
         for column in range(len(grid[row])):
             if grid[row][column] == "#":
-                if debug_mode:
-                    print("#", end=" ")
-                else:
-                    print(".", end=" ")
+                print(".", end=" ")
             else:
                 print(grid[row][column], end=" ")
         print("")

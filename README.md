@@ -71,8 +71,9 @@ I have tested the project by doing the following:
 - The grid printed was out of line with the numbers below.
     - Added : to the letter printing to push content into place.
     - Added sidebonus is a slightly easier to read gameboard.
-- Content
-- Content
+- The while loop in setup_game wasn't working as intended.
+    - Tried a myriad on unsuccesful things.
+    - At the end I found the error, I was +=1 the wrong variable which was causing all sorts of issues.
 
 ### 6.2 Remaining Bugs
 - Content
