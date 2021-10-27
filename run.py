@@ -343,15 +343,15 @@ def run_game():
         game_over()
 
 
-def set_difficulty():
+def set_length():
     """
-    Function that prompts user for desired difficulty.
+    Function that prompts user for desired length.
     Build in functionality to ensure valid user input.
     """
     # Global variables being modified inside this function
     global game_lenght
 
-    while game_lenght not in range(1, 3):
+    while game_lenght not in range(1, 4):
         try:
             game_lenght = int(
                 input("Select game lenght, Short=1, Medium=2, Long=3: "))
@@ -383,14 +383,14 @@ def welcome():
     print("- - -")
 
     # Asking the user to set game lenght
-    set_difficulty()
+    set_length()
 
     # Calling the function that initiates the gameplay loop.
     if 1 <= game_lenght <= 3:
         difficulty_setting(game_lenght)
         run_game()
     else:
-        set_difficulty()
+        set_length()
 
 
 # The function above is called, providing a welcome message.
