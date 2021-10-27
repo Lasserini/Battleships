@@ -1,5 +1,4 @@
 import random
-
 """
 Import of random module to support building randomly placed ships later.
 
@@ -239,7 +238,7 @@ def where_to_shoot():
     row = -1
     column = -1
     while coord_correct is False:
-        placement = input("Enter row and column fx D7: ")
+        placement = input("Enter row and column fx D7: \n")
         placement = placement.upper()
         if len(placement) <= 0 or len(placement) > 2:
             print("Error: Only enter one row and column such fx D7")
@@ -360,7 +359,7 @@ def set_length():
     while game_lenght not in range(1, 4):
         try:
             game_lenght = int(
-                input("Select game lenght, Short=1, Medium=2, Long=3: "))
+                input("Select game lenght, Short=1, Medium=2, Long=3: \n"))
         except ValueError:
             print("Error: Type a number between 1 & 3 to select game lenght")
 
