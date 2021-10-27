@@ -42,7 +42,7 @@ The program utilized a fair amount of global variables, they are listed here.
 grid = [[]]
 
 # Variable with letters, used to create the grid later.
-letters = "ABCDEFGHIJKL"
+letters = "ABCDEFGHIJ"
 
 # Variable for the size of the grid.
 grid_size = 10
@@ -77,17 +77,17 @@ def difficulty_setting(game_lenght):
     global shots_left
 
     if game_lenght == 1:
+        grid_size = 6
+        ship_count = 3
+        shots_left = 18
+    elif game_lenght == 2:
         grid_size = 8
         ship_count = 5
         shots_left = 32
-    elif game_lenght == 2:
+    else:
         grid_size = 10
         ship_count = 8
         shots_left = 50
-    else:
-        grid_size = 12
-        ship_count = 12
-        shots_left = 72
 
 
 def print_ship(y_coordinate_start, y_coordinate_end, x_coordinate_start, x_coordinate_end):
@@ -193,7 +193,8 @@ def setup_game():
 
 def make_grid():
     """
-    Prints the grid to the terminal, to give the player a visual understanding of what's going on.
+    Prints the grid to the terminal.
+    Gives the player a visual understanding of what's going on.
     """
     # Global variables being modified inside this function
     global grid
@@ -261,7 +262,11 @@ def set_difficulty():
     """
     Function that prompts user for desired difficulty.
     """
+    # Global variables being modified inside this function
+    global game_lenght
+
     game_lenght = int(input("Select game lenght. Short=1, Medium=2, Long=3: "))
+
 
 def welcome():
     """
@@ -291,6 +296,7 @@ def welcome():
 
     # Calling the function that initiates the gameplay loop.
     if 1 <= game_lenght <= 3:
+        difficulty_setting(game_lenght)
         run_game()
     else:
         print("Error: Type a number between 1 & 3 to select game lenght")
