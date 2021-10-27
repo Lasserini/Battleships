@@ -238,23 +238,23 @@ def where_to_shoot():
     row = -1
     column = -1
     while coord_correct is False:
-        placement = input("Enter row and column fx D7: \n")
+        placement = input("Enter row and column fx D3: \n")
         placement = placement.upper()
-        if len(placement) <= 0 or len(placement) > 2:
-            print("Error: Only enter one row and column such fx D7")
+        if len(placement) <= 1 or len(placement) > 2:
+            print("Error: Only enter one row and column such fx D3")
             continue
         row = placement[0]
         column = placement[1]
         if not row.isalpha() or not column.isnumeric():
-            print("Error: Enter letter for row and number for column")
+            print("Error: Enter letter for row and number for column fx D3")
             continue
         row = letters.find(row)
         if not (-1 < row < grid_size):
-            print("Error: Enter letter for row and number for column")
+            print("Error: Enter letter for row and number for column fx D3")
             continue
         column = int(column)
         if not (-1 < column < grid_size):
-            print("Error: Enter letter for row and number for column")
+            print("Error: Enter letter for row and number for column fx D3")
             continue
         if grid[row][column] == "0" or grid[row][column] == "X":
             print("Location fired at previously. Try again")

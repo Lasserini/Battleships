@@ -111,9 +111,11 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
 - Program was breaking when given unexpected player input for lenght setting.
     - Added a range check and a ValueError exception.
     - Ensures the user won't break the game, and will be able to select desired game lenght.
+- Typing a single input to coordinates broke the game.
+    - Fixes the input lenght validation code.
 
 ### 5.2 Remaining Bugs
-- Typing a single input to coordinates breaks the game.
+- No known bugs.
 
 ### 5.3 Validator Testing
 The code passes through the PEP8 Validator without issues.
