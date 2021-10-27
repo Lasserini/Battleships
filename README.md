@@ -68,7 +68,9 @@ I have tested the project by doing the following:
 - Content
 
 ### 6.1 Solved Bugs
-- Content
+- The grid printed was out of line with the numbers below.
+    - Added : to the letter printing to push content into place.
+    - Added sidebonus is a slightly easier to read gameboard.
 - Content
 - Content
 

@@ -203,7 +203,20 @@ def make_grid():
     # Adjusting lenght of letters depending on chosen game lenght
     letters = letters[0: len(grid)+1]
 
-    # for loop to print the grid (need to figure this out)
+    # For loop to print the grid
+    for row in range(len(grid)):
+        print(letters[row], end=") ")
+        for column in range(len(grid[row])):
+            if grid[row][column] == "@":
+                print(".", end=" ")
+            else:
+                print(grid[row][column], end=" ")
+        print("")
+
+    print("  ", end=" ")
+    for i in range(len(grid[0])):
+        print(str(i), end=" ")
+    print("")
 
 
 def game_over():
