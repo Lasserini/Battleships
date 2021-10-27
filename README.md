@@ -58,16 +58,13 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
 - Difficulty settings (fx more/less ammunition etc.)
 - Sea Mines (a 1spot trap with some negative consequence to the player)
 
-## 5. Data Model
-REMEMBER TO ADD CONTENT
+## 4. Technologies Used
 
-## 5. Technologies Used
-
-### 5.1 Languages Used
+### 4.1 Languages Used
 
 -   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### 5.2 Programs Used
+### 4.2 Programs Used
 
 1. [Gitpod](https://gitpod.io/)
     - Gitpod was used to develop the website.
@@ -80,11 +77,11 @@ REMEMBER TO ADD CONTENT
 1. [PEP8 Python Validator](https://pep8online.com/)
     - Used to validate Python code.
 
-### 5.3 Libraries & Frameworks Used
+### 4.3 Libraries & Frameworks Used
 - Used Random to help randomly place ships.
 
-## 6. Testing
-### 6.1 Solved Bugs
+## 65 Testing
+### 5.1 Solved Bugs
 - The grid printed was out of line with the numbers below.
     - Added : to the letter printing to push content into place.
     - Added sidebonus is a slightly easier to read gameboard.
@@ -97,14 +94,14 @@ REMEMBER TO ADD CONTENT
     - Added a range check and a ValueError exception.
     - Ensures the user won't break the game, and will be able to select desired game lenght.
 
-### 6.2 Remaining Bugs
+### 5.2 Remaining Bugs
 - None uncovered so far.
 
-### 6.3 Validator Testing
+### 5.3 Validator Testing
 PEP8.
 Insert result image.
 
-## 7. Deployment
+## 6. Deployment
 The project was deployed using Code Institute's mock terminal for Heroku.
 
 *   Steps for deployment   
@@ -115,11 +112,11 @@ The project was deployed using Code Institute's mock terminal for Heroku.
     - Click on Deploy
 
 
-## 8. Credits
+## 7. Credits
 
 ### Code inspiration
-- Content
-- Content
+- Throughtout the project I have drawn inspiration from a tutorial Battleshild video from [CS Students:](https://www.youtube.com/watch?v=MgJBgnsDcF0)
+- The basic structuring of the programme & the board+ship generation functions is build upon the concepts explained in the video.
 
 ### Content
 -   All content was written by the developer.
@@ -127,6 +124,6 @@ The project was deployed using Code Institute's mock terminal for Heroku.
 
 ### Acknowledgements
 
-- [W3Schools] https://www.w3schools.com/ for being a great place to find helpful answers.
+- [W3Schools:](https://www.w3schools.com/) for being a great place to find helpful answers.
 
 - Code Institute for the deployment terminal.

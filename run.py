@@ -212,10 +212,16 @@ def game_over():
 
     # Check whether the game is won or lost (REMEMBER TO UPDATE FLAVOURTEXT!)
     if shots_left <= 0:
-        print("You lose")
+        print("Oh my, the gunner looks desperate!")
+        print("Commander! We're out of ammunition")
+        print("GAME LOST! Better luck next time")
         game_complete = True
     elif ship_count == ships_sunk:
-        print("You won")
+        print("You heard one final loud explosion, and then:")
+        print("Silence")
+        print("Could it be? Is it finally over?")
+        print("Brilliant aiming sire")
+        print("YOU WIN!")
         game_complete = True
 
 
