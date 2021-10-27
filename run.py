@@ -239,10 +239,55 @@ def game_over():
         game_complete = True
 
 
+def where_to_shoot():
+    """
+    Function to prompt user for firing coordinates.
+    A number of checks to ensure valid data input.
+    """
+    # Global variables being modified inside this function
+    global letters
+    global grid
+
+
+def ship_sunk():
+    """
+    Function that runs on a hit.
+    Checks whether the entire ship is sunk.
+    Needed to count ships_sunk, which is used to track game ending.
+    """
+    # Global variables being modified inside this function
+    global ship_location_storage
+    global grid
+
+
 def fire():
     """
     This function handles the steps taken when the user needs to fire a shoot.
     """
+    # Global variables being modified inside this function
+    global grid
+    global shots_left
+    global ships_sunk
+
+    # Using where_to_shoot to get coordinates returned in a tuple
+    row, column = where_to_shoot()
+    print("")
+    print("----------------------------")
+
+    # Checking what the shot hit & applying consequence
+    if grid[row][col] == ".":
+        print("You hear a large 'blop' as your MISS! hits the water")
+        grid[row][col] = "0"
+    elif grid[row][col] == "@":
+        print("KABOOM! An amazing HIT", end=" ")
+        grid[row][col] = "X"
+        if ship_sunk(row, column):
+            print("Success! The ship takes a massive blow and sinks!")
+            ships_sunk += 1
+        else:
+            print("That ship needs another HIT!")
+
+    shots_left -= 1
 
 
 def run_game():
