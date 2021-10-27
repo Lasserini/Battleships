@@ -7,7 +7,7 @@ The game runs in Code Institute's mock terminal on Heroku.
 
 The goal of the game is to sink all the computers ships before you run out of ammunition. Best of luck!
 
-[Try the live version of the game here:](UPDATE LINK TO DEPLOYED GAME HERE)
+[Try the live version of the game here:](https://battleship-commander.herokuapp.com/)
 
 ## 1. How to Play
 - First the game prompts the players for whether they would like a short, medium or long game.
@@ -98,8 +98,9 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
 - None uncovered so far.
 
 ### 5.3 Validator Testing
-PEP8.
-Insert result image.
+The code passes through the PEP8 Validator without issues.
+
+<img src="Fix link after deployment">
 
 ## 6. Deployment
 The project was deployed using Code Institute's mock terminal for Heroku.
