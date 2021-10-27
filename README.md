@@ -1,6 +1,6 @@
 <h1 align="center">Battleship Commander</h1>
 
-<h2 align="center"><img src="INSERT Am I Responsive Image"></h2>
+<h2 align="center"><img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/battleships_readme_image.png"></h2>
 
 This game is a Python terminal game, build during a Diploma in Software Development at Code Institute. Its the third porfolio project out of five and is build in Python.
 The game runs in Code Institute's mock terminal on Heroku.
@@ -100,7 +100,7 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
 ### 5.3 Validator Testing
 The code passes through the PEP8 Validator without issues.
 
-<img src="Fix link after deployment">
+<img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/pep8_battleship_validation.png">
 
 ## 6. Deployment
 The project was deployed using Code Institute's mock terminal for Heroku.
