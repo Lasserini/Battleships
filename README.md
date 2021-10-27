@@ -40,14 +40,22 @@ The website is aimed at people who enjoy quick games, its intended to be lighthe
     - Ships can have varying random lenghts.
     - Ships remain hidden from the player until they take a hit.
 
+<img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/game_board.png">
+
 *   Custom game lenght
     - Player imput dictates whether a short, medium or long game is run.
     - The factors that change are grid size, number of ships and amount of ammunition.
+
+<img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/select_game_length.png">
 
 *   Imput validation
     - Must enter coordinates inside the gameboard(grid).
     - Prevents entering the same guess more than once.
     - Ensures the correct format for guesses is being used.
+
+    <img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/error_two.png">
+
+    <img src="https://github.com/Lasserini/Battleships/blob/main/readme_images/error_one.png">
 
 *   User feedback
     - Provides both visual and textual feedback to player shots.
