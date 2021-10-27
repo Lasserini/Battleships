@@ -5,7 +5,7 @@ Import of random module to support building randomly placed ships later.
 
 Legend for Grid:
 "." = Water (empty space)
-"@" = Ship (only used backend)
+"#" = Ship (only used backend)
 "X" = Hit (damaged ship)
 "0" = Miss (water that has been shot at, without hitting a ship)
 
@@ -92,7 +92,7 @@ def print_ship(
                 x_coord_start, x_coord_end])
         for column in range(y_coord_start, y_coord_end):
             for row in range(x_coord_start, x_coord_end):
-                grid[column][row] = "@"
+                grid[column][row] = "#"
     return empty_position
 
 
@@ -152,9 +152,9 @@ def setup_game():
     rows = grid_size
 
     grid = []
-    for c in range(rows):
+    for x in range(rows):
         row = []
-        for r in range(columns):
+        for y in range(columns):
             row.append(".")
         grid.append(row)
 
@@ -183,12 +183,17 @@ def make_grid():
     # Adjusting lenght of letters depending on chosen game lenght
     letters = letters[0: len(grid)+1]
 
+    debug_mode = True
+
     # For loop to print the grid
     for row in range(len(grid)):
-        print(letters[row], end=") ")
+        print(letters[row], end=": ")
         for column in range(len(grid[row])):
-            if grid[row][column] == "@":
-                print(".", end=" ")
+            if grid[row][column] == "#":
+                if debug_mode:
+                    print("#", end=" ")
+                else:
+                    print(".", end=" ")
             else:
                 print(grid[row][column], end=" ")
         print("")
@@ -304,7 +309,7 @@ def fire():
     if grid[row][column] == ".":
         print("You hear a large 'blop' as your MISS! hits the water")
         grid[row][column] = "0"
-    elif grid[row][column] == "@":
+    elif grid[row][column] == "#":
         print("KABOOM! An amazing HIT", end=" ")
         grid[row][column] = "X"
         if ship_sunk(row, column):
